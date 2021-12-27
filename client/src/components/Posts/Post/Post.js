@@ -7,7 +7,7 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
-import { deletePost } from '../../../actions/posts';
+import { deletePost, likePost } from '../../../actions/posts';
 
 //post 가 props같은 역할을 한다
 const Posts = ({ post, setCurrentId }) => {
@@ -34,7 +34,8 @@ const Posts = ({ post, setCurrentId }) => {
                 <Typography variant="h6" gutterBottom>{post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={() => null}>
+                {/* dispatch() -> 이런 event가 있을거예요~ 확인해주세요 같은 느낌 */}
+                <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small"/>
                     Like
                     {post.likeCount}

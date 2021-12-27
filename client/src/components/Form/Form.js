@@ -30,7 +30,7 @@ const Form = ( { currentId, setCurrentId } ) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log('client handleSubmit + postData' + postData);
         // if we have currentId to update, action is update
         if(currentId){
             dispatch(updatePost(currentId, postData));
@@ -50,7 +50,7 @@ const Form = ( { currentId, setCurrentId } ) => {
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Memory</Typography>
             <TextField 
-                name="creator" 
+                name="creator"
                 variant="outlined" 
                 label="Creator" 
                 fullWidth 

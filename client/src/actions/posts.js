@@ -10,6 +10,7 @@ export const getPosts = () => async (dispatch) => {
         //First, get the respond from server
         //api returns a response. we just need a response.data
         // destructuring
+        console.log('action.getPosts in');
         const { data } = await api.fetchPosts();
         //Dispatch the action with type and payload
         //And send the data through 'action.payload'
@@ -23,7 +24,10 @@ export const getPosts = () => async (dispatch) => {
 
 export const createPost = post => async (dispatch) => {
     try {
-        const { data } = await api.createPost(post);
+        console.log("actions createPost in");
+        const promise = await api.createPost(post);
+        console.log(promise);
+        const { data } = promise;
         dispatch({ type: 'CREATE', payload: data });
     } catch (error) {
         console.log(error.message);
@@ -49,5 +53,16 @@ export const deletePost = (id) => async (dispatch) => {
         dispatch({ type: 'DELETE', payload: id });
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const likePost = id => async(dispatch) => {
+    try {
+        const { data } = await api.likePost(id);
+
+        //pass it into reducer
+        dispatch({ type: 'LIKE', payload: data });
+    } catch (error) {
+        
     }
 }
