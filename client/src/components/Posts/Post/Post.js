@@ -37,7 +37,7 @@ const Posts = ({ post, setCurrentId }) => {
                 {/* dispatch() -> 이런 event가 있을거예요~ 확인해주세요 같은 느낌 */}
                 <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small"/>
-                    Like
+                    &nbsp; Like &nbsp;
                     {post.likeCount}
                 </Button>
                 <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>

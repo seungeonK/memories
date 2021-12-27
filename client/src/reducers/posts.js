@@ -1,23 +1,26 @@
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionType';
+
+
 // reducer is a function that accpets a state and an action
 export default (states = [], action) => {
     switch(action.type){
-        case 'DELETE':
+        case DELETE:
             //filter out the one we deleted
             //keep all states except the one matching with the id
             return states.filter((post) => {
                 return post._id !== action.payload;
             })
-        case 'FETCH_ALL':
+        case FETCH_ALL:
             //action.payload is actual post
             return action.payload;
-        case 'CREATE':
+        case CREATE:
             console.log('createPost reducer in');
-            console.log([...states]);
+            console.log([...states], action.payload);
             //add action.payload(=data) in exsisting states
             return [...states, action.payload];
         //update and like behaves same
-        case 'UPDATE':
-        case 'LIKE':
+        case UPDATE:
+        case LIKE:
             //action.payload => updated post
             //looping through states and if we find the id that we used for updating,
             //use that updated payload, for all other states, keep them as they are.

@@ -1,5 +1,6 @@
 //import evertying as api from api folder
 import * as api from '../api/index';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionType';
 
 //create actions(Action Creators) -> functions that returns actions
 //Action is an object that has type and payload
@@ -14,7 +15,7 @@ export const getPosts = () => async (dispatch) => {
         const { data } = await api.fetchPosts();
         //Dispatch the action with type and payload
         //And send the data through 'action.payload'
-        dispatch( { type: "FETCH_ALL", payload: data} );
+        dispatch( { type: FETCH_ALL, payload: data} );
     } catch (error) {
         console.log(error.message);
     }
@@ -28,7 +29,7 @@ export const createPost = post => async (dispatch) => {
         const promise = await api.createPost(post);
         console.log(promise);
         const { data } = promise;
-        dispatch({ type: 'CREATE', payload: data });
+        dispatch({ type: CREATE, payload: data });
     } catch (error) {
         console.log(error.message);
     }
@@ -39,7 +40,7 @@ export const updatePost = (id, post) => async (dispatch) => {
         //updatePost returns response. and we get response.data
         const { data } = await api.updatePost(id, post);
 
-        dispatch({ type: 'UPDATE', payload: data });
+        dispatch({ type: UPDATE, payload: data });
     } catch (error) {
         console.log(error);
     }
@@ -50,7 +51,7 @@ export const deletePost = (id) => async (dispatch) => {
     try {
         await api.deletePost(id);
 
-        dispatch({ type: 'DELETE', payload: id });
+        dispatch({ type: DELETE, payload: id });
     } catch (error) {
         console.log(error);
     }
@@ -61,7 +62,7 @@ export const likePost = id => async(dispatch) => {
         const { data } = await api.likePost(id);
 
         //pass it into reducer
-        dispatch({ type: 'LIKE', payload: data });
+        dispatch({ type: LIKE, payload: data });
     } catch (error) {
         
     }
