@@ -31,7 +31,7 @@ const Posts = ({ post, setCurrentId }) => {
             </div>
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
-                <Typography variant="h6" gutterBottom>{post.message}</Typography>
+                <Typography variant="body2" color="textSecondary" component="p" gutterBottom>{post.message}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
                 {/* dispatch() -> 이런 event가 있을거예요~ 확인해주세요 같은 느낌 */}

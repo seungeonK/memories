@@ -11,7 +11,7 @@ export const createPost = (newPost) => {
     console.log('axios.createPost in');
     console.log(newPost);
     //axios.post(url, data = req.body) when passed to server
-    return axios.post({url: url, data: newPost});
+    return axios.post(url, newPost);
 }
 export const updatePost = (id, updatedPost) => {
     console.log('api.updatePost() in')
